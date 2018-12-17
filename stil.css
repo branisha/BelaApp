@@ -1,0 +1,56 @@
+*{
+  font-family: 'Mukta', sans-serif;
+  font-size: 1.5rem;
+}
+
+.mainTable{
+  display: inline-block;
+  border: 3px solid black;
+  border-radius: 0.5rem;
+  border-spacing: 0;
+}
+
+.mainTable td{
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.mainTable thead{
+  background-color: lightgray;
+}
+.mainTable thead td{
+  padding: 0;
+  border-spacing: 0;
+  border: none;
+}
+
+.mainTable input{
+  width:auto;
+  border: none;
+  margin: 0.5rem;
+}
+
+#tijelo tr td{
+  padding: 0;
+}
+
+#tijelo tr:nth-of-type(even):not(#poljeTotal){
+  background-color: #C6D8D3;
+}
+#tijelo tr:nth-of-type(odd):not(#poljeTotal){
+  background-color: #FDF0D5;
+}
+
+#tijelo tr td:nth-of-type(even){
+  border-left: 1px solid black;
+}
+
+#poljeTotal td p{
+  font-weight: bold;
+  display: block;
+  margin: 0;
+}
+
+#zbroji{
+  vertical-align: top;
+}
