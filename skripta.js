@@ -4,6 +4,8 @@
 // Numerirati tabelu i staviti "zebra striping"
 // I rasporediti stupce kako treba
 
+// Dodati "spremi i obriši" - redci su sa klasom game-row
+
 function provjeriPad(input){
   let check = returnRadio().val();
 
@@ -14,6 +16,7 @@ function provjeriPad(input){
 
   if(input == "mi"){
     if(inMi.val().length > 0){
+      if(inMi.val() > returnIgra() || inMi.val() < 0) inMi.val(returnIgra());
       inVi.val(returnIgra() - parseInt(inMi.val()));
     }else{
       inVi.val(returnIgra());
@@ -21,6 +24,7 @@ function provjeriPad(input){
   }
   else{
     if(inVi.val().length > 0){
+      if(inVi.val() > returnIgra() || inVi.val() < 0) inVi.val(returnIgra());
       inMi.val(returnIgra() - parseInt(inVi.val()));
     }else{
       inMi.val(returnIgra());
@@ -32,13 +36,15 @@ function provjeriPad(input){
   }
 
   if(check == "mi" && temp < returnIgra()/2){
-    console.log("pad");
+    console.log("\"mi\" su pali");
     inMi.css("background-color", "red");
     inVi.css("background-color", "white");
+    return "mi";
   }else if(check == "vi" && temp > returnIgra()/2){
-    console.log("oni su pali");
+    console.log("\"vi\" su pali");
     inMi.css("background-color", "white");
     inVi.css("background-color", "red");
+    return "vi";
   }else{
     console.log("nista");
     inMi.css("background-color", "white");
@@ -69,16 +75,30 @@ function returnIgra(){
 
 function addRow(){
   let tab = $("#tablica");
-  let valMi = $("#inMi").val();
-  let valVi = $("#inVi").val();
+  let valMi = parseInt($("#inMi").val());
+  let valVi = parseInt($("#inVi").val());
   let totalMi = $("#totalValueMi");
   let totalVi = $("#totalValueVi");
+
+  if((!isNaN(valMi) && !isNaN(valVi)) &&
+    (valMi != 0 || valVi != 0)){
+
+    console.log(valMi);
+    console.log(valVi);
+
+    if(provjeriPad(returnRadio()) == "mi"){
+      valVi += valMi;
+      valMi = 0;
+    }else if(provjeriPad(returnRadio()) == "vi"){
+      valMi += valVi;
+      valVi = 0;
+    }
 
   totalMi.text(parseInt(totalMi.text()) + parseInt(valMi));
   totalVi.text(parseInt(totalVi.text()) + parseInt(valVi));
 
   let div1 = $(document.createElement("div"));
-  div1.addClass("row");
+  div1.addClass("row game-row");
 
   let col1 = $(document.createElement("div"));
   col1.addClass("col-2");
@@ -103,7 +123,34 @@ function addRow(){
   div1.append(col2);
   //tab.append(div1);
   $("#tableHeader").after(div1);
+  $("#zvanje").val("0");
+  updateZvanje();
+  $("#inMi").val("0");
+  $("#inVi").val("0");
+  provjeraKrajaIgre();
+  }
+}
 
+function provjeraKrajaIgre(){
+  let vi = parseInt($("#totalValueVi").text());
+  let mi = parseInt($("#totalValueMi").text());
+  console.log("vi" + vi);
+  console.log("mi" + mi);
+
+  if(vi > 1000){
+    console.log("end");
+    let temp_string = 
+    "Pobjedili su \"Vi\" sa " + vi + " naprema " + mi + ".";
+    $("#text-modal").text(temp_string);
+    $("#item-modal").modal("show");
+  }
+  else if(mi > 1000){
+    console.log("end");
+    let temp_string = 
+    "Pobjedili su \"Mi\" sa " + mi + " naprema " + vi + ".";
+    $("#text-modal").text(temp_string);
+    $("#item-modal").modal('show');
+  }
 }
 
 $(document).ready(function(){

@@ -1,106 +1,112 @@
-  <!DOCTYPE html>
-  <html lang="hr">
-  <head>
-    <meta charset="utf-8"/>
-    <title>Homemade bela</title>
-    <link rel="stylesheet" href="stil.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Mukta" rel="stylesheet">
-  </head>
-  <body>
-  <table class="mainTable">
-    <thead>
-      <tr>
-        <td colspan="3">
-        <table style="width:100%; table-layout: fixed;">
-          <tr>
-            <td>Igra:</td>
-            <td>Zvanja:</td>
-            <td>Tko je zvao:</td>
-          </tr>
-          <tr>
-            <td>162</td>
-            <td>
-              <input type="number" value="0" name="zvanja" style="width:100%;"/>
-            </td>
-            <td>
-              Mi<input type="radio" name="tkoZove" value="mi" />
-              Vi<input type="radio" name="tkoZove" value="vi" />
-            </td>
-          </tr>
-        </table>
-      </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="number" name="value1"/>
-        </td>
-        <td>
-          <input type="number" name="value2"/>
-        </td>
-      </tr>
-      <tr>
-        <td>Mi</td>
-        <td>Vi</td>
-      </tr>
-    </thead>
-    <tbody id="tijelo">
-      <tr id="poljeTotal">
-        <td id="poljeMi"><p>0</p></td>
-        <td id="poljeVi"><p>0</p></td>
-      </tr>
-    </tbody>
-  </table>
-  <button type="button" id="zbroji">Zbroji</button>
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <title>Bela App</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="stil2.css">
+  <script src="skripta.js"></script>
+</head>
+<body>
+  <div class="container text-center mt-1 border">
+    <div class="row text-dark py-2">
+      <div class="col">
+        <span>Igra</span>
+      </div>
+      <div class="col">
+        <span>Zvanje</span>
+      </div>
+      <div class="col">
+        <span>Tko je zvao</span>
+      </div>
+    </div>
+    <div class="row bg-dark text-white py-2">
+      <div class="col-1">
+        <span>162</span>
+      </div>
+      <div class="col-1">
+        <span>+</span>
+      </div>
+      <div class="col-4">
+        <input type="number" id="zvanje">
+      </div>
+      <div class="col-1">
+        <span>=</span>
+      </div>
+      <div class="col-1">
+        <span id="igraTotal">162</span>
+      </div>
+      <div class="col">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" value="mi" autocomplete="off" checked> Mi
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" value="vi" autocomplete="off"> Vi
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row bg-dark text-white" id="mainHeader">
+      <div class="col">
+        <span>MI</span>
+      </div>
+      <div class="col">
+        <span>VI</span>
+      </div>
+    </div>
+    <div class="row bg-dark text-white" id="mainHeader">
+      <div class="col">
+        <input type="number" id="inMi">
+      </div>
+      <div class="col">
+        <button type="button" id="unesi" class="btn btn-light">Unesi</button>
+      </div>
+      <div class="col">
+        <input type="number" id="inVi">
+      </div>
+    </div>
+    <div id="tablica">
 
-  <script>
-    let polje1 = document.getElementsByName("value1")[0];
-    let polje2 = document.getElementsByName("value2")[0];
 
-    let btn1 = document.getElementById("zbroji").onclick = function(){
-      let broj1 = parseInt(polje1.value);
-      let broj2 = parseInt(polje2.value);
+    <div class="row bg-dark text-white" id="tableHeader">
+      <div class="col-2">
+      </div>
+      <div class="col-2">
+        <span id="totalValueMi">0</span>
+      </div>
+      <div class="col-4">
 
-      if(isNaN(broj1) || isNaN(broj2)){
-        alert("Napaka");
-        return;
-      }
+      </div>
+      <div class="col-2">
+        <span id="totalValueVi">0</span>
+      </div>
+    </div>
+  </div>
+  
+</div>
 
-      let tablica = document.getElementById("tijelo");
-
-      if(tablica.children.length < 2){
-        let vrstica = document.createElement("tr");
-        let td1 = document.createElement("td");
-        let td2 = document.createElement("td");
-        td1.appendChild(document.createTextNode(broj1));
-        td2.appendChild(document.createTextNode(broj2));
-        vrstica.appendChild(td1);
-        vrstica.appendChild(td2);
-        tablica.insertBefore(vrstica, document.getElementById("poljeTotal"));
-        let total1 = broj1;
-        let total2 = broj2;
-        document.getElementById("poljeMi").children[0].textContent = total1;
-        document.getElementById("poljeVi").children[0].textContent = total2;
-      }else{
-        let vrstica = document.createElement("tr");
-        let td1 = document.createElement("td");
-        let td2 = document.createElement("td");
-        td1.appendChild(document.createTextNode(broj1));
-        td2.appendChild(document.createTextNode(broj2));
-        vrstica.appendChild(td1);
-        vrstica.appendChild(td2);
-        tablica.insertBefore(vrstica, document.getElementById("poljeTotal"));
-        let tempTd1 = 0;
-        let tempTd2 = 0;
-        for(let i = 0; i < tablica.children.length - 1; i++){
-          tempTd1 += parseInt(tablica.children[i].children[0].textContent);
-          tempTd2 += parseInt(tablica.children[i].children[1].textContent);
-        }
-        document.getElementById("poljeMi").children[0].textContent = tempTd1;
-        document.getElementById("poljeVi").children[0].textContent = tempTd2;
-      }
-      polje1.value = polje2.value =  "";
-    }
-
-  </script>
-  </body>
-  </html>
+<div class="modal" tabindex="-1" role="dialog" id="item-modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Kraj igre</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="text-modal">Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  
+</body>
+</html>
