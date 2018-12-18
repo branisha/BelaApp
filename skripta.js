@@ -101,24 +101,25 @@ function addRow(){
   div1.addClass("row game-row");
 
   let col1 = $(document.createElement("div"));
-  col1.addClass("col-2");
+  col1.addClass("col");
 
   let col2 = $(document.createElement("div"));
-  col2.addClass("col-2");
+  col2.addClass("col");
   let span1 = $(document.createElement("span"));
   span1.text(valMi);
   col2.append(span1);
   div1.append(col1);
-  div1.append(col2);
+  div1.append(col2);  
+
   col1 = $(document.createElement("div"));
-  col1.addClass("col-4");
+  col1.addClass("col");
+  span1 = $(document.createElement("span"));
+  span1.text(valVi);
+  col1.append(span1);
   div1.append(col1);
 
   col2 = $(document.createElement("div"));
-  col2.addClass("col-2");
-  span1 = $(document.createElement("span"));
-  span1.text(valVi);
-  col2.append(span1);
+  col2.addClass("col");
 
   div1.append(col2);
   //tab.append(div1);

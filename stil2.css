@@ -1,9 +1,4 @@
-.row span{
-  font-size: 1.5rem;
-}
-.container .row:first-child{
-  background-color: cyan;
-}
+
 
 #tablica .row:nth-child(odd){
   background-color: lightblue;
@@ -13,6 +8,6 @@
   background-color: lightgrey;
 }
 
-.tablica{
-  font-size: 1.5rem;
+#tablica{
+  font-size: 2rem;
 }

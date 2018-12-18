@@ -11,20 +11,19 @@
   <script src="skripta.js"></script>
 </head>
 <body>
-  <div class="container text-center mt-1 border mx-auto">
-    <div class="row bg-dark text-white py-2 justify-content-md-center">
-      <div class="col-md-auto">
-      <div class="input-group input-group-lg mw-auto">
-          <div class="input-group-prepend">
-            <span class="input-group-text">162 + </span>
-          </div>
-          <input type="number" id="zvanje" class="form-control" placeholder="Zvanje">
-          <div class="input-group-append">
-            <span class="input-group-text" id="igraTotal">162</span>
-          </div>
-        </div>
+  <div class="container-fluid text-center mt-1 border">
+    <div class="row text-dark py-2">
+      <div class="col">
+        <span>Igra</span>
       </div>
-      <!--
+      <div class="col">
+        <span>Zvanje</span>
+      </div>
+      <div class="col">
+        <span>Tko je zvao</span>
+      </div>
+    </div>
+    <div class="row bg-dark text-white py-2">
       <div class="col-1">
         <span>162</span>
       </div>
@@ -39,9 +38,9 @@
       </div>
       <div class="col-1">
         <span id="igraTotal">162</span>
-      </div>-->
-      <div class="col-md-auto">
-        <div class="btn-group btn-group-toggle mw-100" data-toggle="buttons">
+      </div>
+      <div class="col">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-primary active">
             <input type="radio" name="options" value="mi" autocomplete="off" checked> Mi
           </label>
@@ -51,41 +50,39 @@
         </div>
       </div>
     </div>
-    <div class="row bg-dark text-white justify-content-md-center" id="mainHeader">
-      <div class="col-md-auto">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">MI</span>
-            </div>
-            <input type="number" id="inMi" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
+    <div class="row bg-dark text-white" id="mainHeader">
+      <div class="col mw-100">
+        <span>MI</span>
       </div>
-      <div class="col col-md-auto">
+      <div class="col">
+        <span>VI</span>
+      </div>
+    </div>
+    <div class="row bg-dark text-white" id="mainHeader">
+      <div class="col">
+        <input type="number" id="inMi">
+      </div>
+      <div class="col">
         <button type="button" id="unesi" class="btn btn-light">Unesi</button>
       </div>
-      <div class="col col-md-auto">
-          <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">VI</span>
-              </div>
-              <input type="number" id="inVi" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-          </div>
+      <div class="col">
+        <input type="number" id="inVi">
       </div>
     </div>
     <div id="tablica">
 
 
     <div class="row bg-dark text-white" id="tableHeader">
-      <div class="col">
+      <div class="col-2">
       </div>
-      <div class="col">
+      <div class="col-2">
         <span id="totalValueMi">0</span>
       </div>
-      <div class="col">
-          <span id="totalValueVi">0</span>
+      <div class="col-4">
+
       </div>
-      <div class="col">
-        
+      <div class="col-2">
+        <span id="totalValueVi">0</span>
       </div>
     </div>
   </div>
